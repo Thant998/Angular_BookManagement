@@ -1,0 +1,32 @@
+<ng-template [ngIf]="check" [ngIfElse]="noData">
+    <div class = "row">
+    <h2> Book List</h2>
+    </div>
+    <table class = "table table-striped table-bordered">
+    <thead>
+    <tr>
+    <th> Book Code</th>
+    <th> Book Title </th>
+    <th> Book Author</th>
+    <th> Book Price</th>
+    <th> Actions </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let book of books" >
+        <td> {{ book.bookCode }} </td>
+        <td> {{ book.bookTitle }} </td>
+        <td> {{ book.bookAuthor}} </td>
+        <td> {{ book.bookPrice}} </td>
+        <td>
+        <button (click) = "updateBook(book.bookCode)" class = "btn btn-primary"> Update</button>
+        <button (click) = "deleteBook(book.bookCode)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+        <button (click) = "bookDetails(book.bookCode)" class = "btn btn-primary" style="margin-left: 10px"> View</button>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </ng-template>
+        <ng-template #noData>
+        <h4>No Book Found!</h4>
+        </ng-template>
